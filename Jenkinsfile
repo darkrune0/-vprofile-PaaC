@@ -21,11 +21,11 @@ pipeline {
     }                                                                                
   }                                                                                  
 }                                                                                    
-/*
+// ##########################################################################
 pipeline {
     
 	agent any
-/*	
+	
 	tools {
         maven "maven3"
     }
@@ -49,8 +49,8 @@ pipeline {
             post {
                 success {
                     echo 'Now Archiving...'
-*///                    archiveArtifacts artifacts: '**/target/*.war'
-/*               }
+                    archiveArtifacts artifacts: '**/target/*.war'
+               }
             }
         }
 
@@ -137,9 +137,5 @@ pipeline {
                 }
             }
         }
-
-
     }
-
-
-}*/
+}
