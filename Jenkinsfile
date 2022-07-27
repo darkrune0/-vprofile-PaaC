@@ -76,7 +76,7 @@ pipeline {
                 protocol:'http',
                 nexusUrl: '192.168.1.24:8081',
                 groupId: 'QA',
-                version: "${env.BUILD_ID}-${env.BUILD_TIMESTAMP}",
+                version: "${env.BUILD_ID}",
                 repository:'vprofile-repo',
                 credentialsId:'nexuslogin',
                 artifacts: [
