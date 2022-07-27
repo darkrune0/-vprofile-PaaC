@@ -30,6 +30,7 @@ pipeline {
             sh 'mvn checkstyle:checkstyle'
         }
     }
+    //this stage calls for a sonarqube report
     stage('Sonar Analysis'){
         //env variable
         environment{
@@ -50,6 +51,7 @@ pipeline {
             }
         }
     }
+    //this step makes jenkins wait for sonarqube report
     stage('Quality Gate 666'){
         steps{
             timeout(time: 10, unit: 'MINUTES') {
@@ -57,6 +59,27 @@ pipeline {
             }
         }
     }
+    stage('upload artifact'){
+        steps{
+            nexusArtifactUploader(
+                nexusVersion: 'nexus3',
+                protocol:'http',
+                nexusUrl: '192.168.1.24:8081',
+                groupId: 'QA',
+                version: "${env.BUILD_ID}-${env.BUILD_TIMESTAMP}",
+                repository:'vprofile-repo',
+                credentialsId:'nexuslogin',
+                artifacts: [
+                    [artifactID: vproapp,
+                     classifier: '',
+                     file: 'target/vprofile-v2.war',
+                     type: 'war']
+                ]
+                )
+
+        }
+    }
+
 
   }                                                                                  
 }                                                                                    
