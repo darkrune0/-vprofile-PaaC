@@ -8,7 +8,7 @@ pipeline {
     NEXUS_PROTOCOL = "http"
     NEXUS_URL = "192.168.1.24:8081"
     NEXUS_REPOSITORY = "vprofile-repo"
-    NEXUS_REPO_ID    = "vprofile-release"
+    NEXUS_REPO_ID    = "vprofile-repo"
     NEXUS_CREDENTIAL_ID = "nexuslogin"
     ARTVERSION = "${env.BUILD_ID}"
   }
