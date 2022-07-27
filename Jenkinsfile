@@ -10,7 +10,10 @@ pipeline {
     NEXUS_REPOSITORY = "vprofile-repo"
     NEXUS_REPO_ID    = "vprofile-repo"
     NEXUS_CREDENTIAL_ID = "nexuslogin"
+    ARTID = "vprofile"
     ARTVERSION = "${env.BUILD_ID}"
+    ART_PATH = "target/vprofile-v2.war"
+    ARTTYPE = "war"
   }
 
   stages{                                                                            
@@ -73,17 +76,17 @@ pipeline {
         steps{
             nexusArtifactUploader(
                 nexusVersion: NEXUS_VERSION,
-                protocol:NEXUS_PROTOCOL,
+                protocol: NEXUS_PROTOCOL,
                 nexusUrl: NEXUS_URL,
                 groupId: 'qa',
                 version: ARTVERSION,
                 repository: NEXUS_REPOSITORY,
-                credentialsId:'nexuslogin',
+                credentialsId: 'nexuslogin',
                 artifacts: [
-                    [artifactID: 'vprofile',
+                    [artifactID: ARTID,
                      classifier: '',
-                     file: 'target/vprofile-v2.war',
-                     type: 'war']
+                     file: ART_PATH,
+                     type: ARTTYPE]
                 ]
             )
 
