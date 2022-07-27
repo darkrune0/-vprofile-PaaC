@@ -1,3 +1,27 @@
+pipeline {                                                                           
+  agent any
+  tools {
+        maven "mvn3.8.6"
+  }
+  stages{                                                                            
+    stage('Fetch Code'){                                                             
+      steps{                                                                         
+        git branch: 'main', url:'https://github.com/darkrune0/vprofile-PaaC.git'
+      }                                                                              
+    }                                                                                
+    stage('build'){                                                                  
+      steps{                                                                         
+        sh 'mvn install'                                                             
+      }                                                                              
+    }                                                                                
+    stage('Test'){                                                                   
+      steps{                                                                         
+        sh 'mvn test'                                                                
+      }                                                                              
+    }                                                                                
+  }                                                                                  
+}                                                                                    
+/*
 pipeline {
     
 	agent any
@@ -5,7 +29,7 @@ pipeline {
 	tools {
         maven "maven3"
     }
-*/	
+
     environment {
         NEXUS_VERSION = "nexus3"
         NEXUS_PROTOCOL = "http"
@@ -118,4 +142,4 @@ pipeline {
     }
 
 
-}
+}*/
