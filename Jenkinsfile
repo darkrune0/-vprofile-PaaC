@@ -50,6 +50,14 @@ pipeline {
             }
         }
     }
+    stage('Quality Gate 666'){
+        steps{
+            timeout(time: 10, unit: 'MINUTES') {
+               waitForQualityGate abortPipeline: true
+            }
+        }
+    }
+
   }                                                                                  
 }                                                                                    
 // ##########################################################################
