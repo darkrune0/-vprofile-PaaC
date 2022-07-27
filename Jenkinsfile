@@ -11,7 +11,7 @@ pipeline {
     NEXUS_REPO_ID    = "vprofile-repo"
     NEXUS_CREDENTIAL_ID = "nexuslogin"
     ARTID = "vprofile"
-    ARTVERSION = "${env.BUILD_ID}-SNAPSHOT"
+    ARTVERSION = "${env.BUILD_ID}"
     ART_PATH = "target/vprofile-v2.war"
     ARTTYPE = "war"
   }
