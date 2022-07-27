@@ -98,28 +98,6 @@ pipeline {
                     artifactPath = filesByGlob[0].path;
                     artifactExists = fileExists artifactPath;
 
-                echo "env variables #############################";
-                echo NEXUS_VERSION;
-                echo NEXUS_CREDENTIAL_ID;
-
-                echo "nexusVersion:" NEXUS_VERSION;
-                echo "protocol:" NEXUS_PROTOCOL;
-                echo "nexusUrl:" NEXUS_URL;
-                echo "groupId:" pom.groupId;
-                echo "version:" ARTVERSION;
-                echo "repository:" NEXUS_REPOSITORY;
-                echo "credentialsId:" NEXUS_CREDENTIAL_ID;
-
-                echo "artifactId:" pom.artifactId;
-                echo "classifier:" '';
-                echo "file:" artifactPath;
-                echo "type:" pom.packaging;
-
-
-
-
-
-
                 if(artifactExists) {
                     echo "*** File: ${artifactPath}, group: ${pom.groupId}, packaging: ${pom.packaging}, version ${pom.version} ARTVERSION";
                     nexusArtifactUploader(
@@ -145,6 +123,22 @@ pipeline {
                 else {
                     error "*** File: ${artifactPath}, could not be found";
                 }
+
+                echo "env variables #############################";
+                echo NEXUS_VERSION;
+                echo NEXUS_CREDENTIAL_ID;
+
+                echo NEXUS_VERSION;
+                echo NEXUS_PROTOCOL;
+                echo NEXUS_URL;
+                echo pom.groupId;
+                echo ARTVERSION;
+                echo NEXUS_REPOSITORY;
+                echo NEXUS_CREDENTIAL_ID;
+
+                echo pom.artifactId;
+                echo artifactPath;
+                echo pom.packaging;
             }
         }
     }
